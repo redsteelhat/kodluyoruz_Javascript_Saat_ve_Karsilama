@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karşılama Ekranı</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f4f4f4;
+        }
+        #container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>Adınızı Giriniz:</h2>
+        <input type="text" id="nameInput" placeholder="Adınız">
+        <button onclick="displayGreeting()">Gönder</button>
+        <h1 id="greeting"></h1>
+        <p id="datetime"></p>
+    </div>
+
+    <script>
+        function displayGreeting() {
+            const name = document.getElementById('nameInput').value;
+            if(name) {
+                document.getElementById('greeting').innerText = `Merhaba, ${name}!`;
+                updateDateTime();
+                setInterval(updateDateTime, 1000);
+            }
+        }
+
+        function updateDateTime() {
+            const now = new Date();
+            const date = now.toLocaleDateString('tr-TR');
+            const time = now.toLocaleTimeString('tr-TR');
+            document.getElementById('datetime').innerText = `Bugün: ${date} - Saat: ${time}`;
+        }
+    </script>
+</body>
+</html>
